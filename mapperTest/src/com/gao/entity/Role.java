@@ -1,7 +1,7 @@
 package com.gao.entity;
 
 import java.util.List;
-
+//ÐÞ¸Ä
 public class Role {
 	private int rid;
 	private String rname;

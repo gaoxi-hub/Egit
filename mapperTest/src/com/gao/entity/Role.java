@@ -3,6 +3,7 @@ package com.gao.entity;
 import java.util.List;
 //ÐÞ¸Ä
 //this paragram
+//eee
 public class Role {
 	private int rid;
 	private String rname;

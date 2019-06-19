@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gao.mapper.RoleMapper">
+	<!-- 不可以 <select id="queryRoleAndUser" resultType="role"> select * from 
+		role r left join user u on u.rid=r.rid </select> -->
+
+    <resultMap type="role" id="RoleMap">
+		<id column="rid" property="rid" />
+		<result column="rname" property="rname" />
+		<!-- collection:将结果集的数据封装到集合中 -->
+		<collection property="users" ofType="User" column="rid">
+			<id column="uid" property="uid" />
+			<result column="uname" property="uname" />
+			<result column="rid" property="rid" />
+
+		</collection>
+
+	</resultMap>
+    <select id="queryRoleAndUser" resultMap="RoleMap">
+		select * from role r left join user u on u.rid=r.rid
+	</select>
+	
+	
+	
+	<resultMap type="role" id="RoleMap2">
+		<id column="rid" property="rid" />
+		<result column="rname" property="rname" />
+		<!--collection:将结果集的数据封装到集合中 -->
+		<collection property="users" ofType="user" column="rid" 
+		select="com.gao.mapper.UserMapper.selectUser">
+		</collection>
+
+	</resultMap>
+
+
+
+	<select id="queryRoleAndUser2" resultMap="RoleMap2">
+		select * from role
+	</select>
+	
+	
+
+	<select id="selectRole" resultType="role">
+		select * from role where rid=#{rid}
+	</select>
+
+
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace 随便写 但是执行时要写一致了 -->
+<mapper namespace="com.gao.mapper.StuMapper">
+	
+	<!-- 添加此标签默认使用 了二级缓存
+		实体类必须序列化
+	-->
+	<cache></cache>
+
+	<sql id="stuSimple">
+		name,age
+	</sql>
+
+	<!-- 返回类型必须 写全路径 -->
+	<select id="selectStu" resultType="student" parameterType="int">
+		select * from stu where id = #{id}
+	</select>
+
+	<!-- 查询学生列表 -->
+	<select id="queryAll" resultType="student">
+		select * from stu;
+	</select>
+
+
+	<!-- 删除 -->
+	<delete id="deleteStu">
+		delete from stu where name=#{stuname}
+	</delete>
+
+	<!--更新 -->
+	<update id="updateStu">
+		update stu set name=#{name},age=#{age} where id=#{id}
+	</update>
+
+</mapper>

@@ -2,7 +2,7 @@ package com.gao.entity;
 
 import java.util.List;
 //ÐÞ¸Ä
-//hello
+//ddd+this 
 //dd
 public class Role {
 	private int rid;
